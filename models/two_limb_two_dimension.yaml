@@ -1,0 +1,9 @@
+robot:
+  name: "two_link"
+  links:
+    - 1.0
+    - 1.0
+  joints:
+    - 0.0
+    - 0.0
+  control_points: 3
