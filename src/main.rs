@@ -29,6 +29,7 @@ struct Twist{
 	angular: Vector<Dist, U>,
 }
 
+
 struct Sphere{
 	pose: Pose,
 	twist: Twist,
@@ -48,6 +49,32 @@ impl Sphere {
 	}
 	
 }
+
+struct RobotModel2D{
+	// A robot model with n links and (n-1) joints
+	// Links are expected to be 1-dimensional
+	name: String,
+	links: Vec<f64>, 
+	joint_position: Vec <f64>,
+	joint_velocity: Vec <f64>,
+}
+
+impl RobotModel2D{
+	fn get_jacobian(&self) -> f64{
+		let jacobian = 0.0;
+		return jacobian;
+	}
+
+	fn update_joint_state(&self, delta_time: f64){
+		let mut ii = 0; // Can this directly be included in the iterator
+		for pos in self.joint_position.iter_mut(){
+			*pos = *pos + delta_time * self.joint_velocity[ii];
+			ii = ii + 1;
+		}
+	}
+}
+
+
 
 struct ControlPoint{
 	pose: Pose,
@@ -70,6 +97,7 @@ struct RobotModel{
 	name: String,
 	links: Vec<ControlPoint>,
 	joints: Vec<f64>,
+	joint_positions: Vec<f64>,
 }
 
 // fn create_from_file() -> RobotModel {
@@ -77,10 +105,11 @@ struct RobotModel{
 // }
 // impl RobotModel{
 // }
-
-fn compute_jacobian (joint_positions: Vec<f64>) -> Vec<f64> {
-	let new_vector = vec![joint_positions[0]];
-	return Vec::new();
+impl RobotModel {
+	fn compute_jacobian (&self, joint_positions: Vec<f64>) -> Vec<f64> {
+		let new_vector = vec![joint_positions[0]];
+		return Vec::new();
+	}
 }
 
 fn main() {
