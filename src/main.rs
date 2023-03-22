@@ -38,7 +38,7 @@ struct Sphere{
 
 
 impl Sphere {
-	fn get_surface_points(&self, n_points: u32){
+	fn get_surface_points(&self, _n_points: u32){
 		// return vec![]
 		// return (sphere.pose.position - position).length() - sphere.radius - margin;
 		return
@@ -67,10 +67,10 @@ impl RobotModel2D{
 
 	fn update_joint_state(&self, delta_time: f64){
 		let mut ii = 0; // Can this directly be included in the iterator
-		for pos in self.joint_position.iter_mut(){
-			*pos = *pos + delta_time * self.joint_velocity[ii];
-			ii = ii + 1;
-		}
+		// for pos in self.joint_position.iter_mut(){
+		// 	*pos = *pos + delta_time * self.joint_velocity[ii];
+		// 	ii = ii + 1;
+		// }
 	}
 }
 
@@ -107,7 +107,7 @@ struct RobotModel{
 // }
 impl RobotModel {
 	fn compute_jacobian (&self, joint_positions: Vec<f64>) -> Vec<f64> {
-		let new_vector = vec![joint_positions[0]];
+		let _new_vector = vec![joint_positions[0]];
 		return Vec::new();
 	}
 }
