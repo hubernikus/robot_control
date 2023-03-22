@@ -2,7 +2,10 @@
 #include <pinocchio/algorithm/frames.hpp>
 #include <pinocchio/algorithm/joint-configuration.hpp>
 
-#include "PinocchioWrapper.h"
+#include "PinocchioWrapper.hpp"
+
+#include <Eigen/Dense>
+using Eigen::VectorXd;
 
 extern "C" {
   PinocchioRobot* newPinocchioRobotModel(const std::string urdf_path) {
@@ -10,7 +13,7 @@ extern "C" {
 	pinocchio::urdf::buildModel(urdf_path, *(robot_->model));
 	robot_->data = new pinocchio::Data(*(robot_->model));
 	
-	int number_of_joints = 6; // TODO: get as argument
+	int number_of_joints = 6; // TODO: get this from robot
 	robot_->jacobian = new pinocchio::Data::Matrix6x(6, number_of_joints);
 	
 	// std::vector<std::string> frames;
@@ -22,11 +25,6 @@ extern "C" {
 	// this->init_qp_solver();
 	return robot_;
   }
-
-  // PinocchioRobotData* PinocchioRobotModel_get_data(const PinocchioRobotModel* robot_model) {
-  // 	pinocchio::Data* data_ = new pinocchio::Data(*robot_model);
-  // 	return data_;
-  // }
 
   void PinocchioRobotModel_compute_joint_jacobian(
 	PinocchioRobot* robot,

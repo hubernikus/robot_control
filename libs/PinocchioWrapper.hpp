@@ -1,5 +1,5 @@
-#include <pinocchio/algorithm/frames.hpp>
-#include <pinocchio/algorithm/joint-configuration.hpp>
+// #include <pinocchio/algorithm/frames.hpp>
+// #include <pinocchio/algorithm/joint-configuration.hpp>
 
 #ifndef __PINOCCHIOWRAPPER_H
 #define __PINOCCHIOWRAPPER_H
@@ -7,7 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
 	typedef struct PinocchioRobot {
 		pinocchio::Model* model;
 		pinocchio::Data* data;

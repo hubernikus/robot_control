@@ -17,3 +17,8 @@ https://eigen.tuxfamily.org/dox/GettingStarted.html#title0
 Make sure `Pinocchio` is installed in your environment.
 https://stack-of-tasks.github.io/pinocchio/download.html
 
+Initall libclan
+``` bash
+sudo apt install llvm-dev libclang-dev clang
+```
+

@@ -1,5 +1,9 @@
 extern crate nalgebra as na;
 use euclid::{Vector3D as Vector, Point3D as Point, Rotation3D as Rotation};
+
+// Custom library
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+
 // extern crate eculid as euclid;
 // use euclid::{Vector3D, Point3D, Rotation3D};
 // struct CartesianPosition{
@@ -114,6 +118,13 @@ impl RobotModel {
 
 fn main() {
 	// Build and run
-	// cargo build && ./target/debug/rust_avoider
-    println!("\nHello, world! - you did it.\n");
+	// cargo build && ./target/debug/robot_avoider
+	let mut what_is_the_answer: i32;
+	unsafe {
+		// c-API
+		what_is_the_answer = hello();
+	}
+	
+    println!("\nHello, world! - you did it :-) \n");
+	dbg!(what_is_the_answer);
 }
